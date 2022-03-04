@@ -6,7 +6,7 @@ Computer Programming 1 which focoused on Processing and Java.
 
 ### Calculator 
 * Screen Capture of Running Application 
-* ![SpaceGame](<img width="989" alt="SpaceGameSC" src="https://user-images.githubusercontent.com/89172997/156828289-8f9f8a7c-e664-403a-bcdb-da06e2a9b3d1.png">)
+* ![SpaceGame](https://github.com/Kair12345/KR-Portfolio/blob/gh-pages/Images/SpaceGameSC.png)
 * Source Code for Application 
 
 ### Space Game 
