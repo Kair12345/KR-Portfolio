@@ -1,0 +1,413 @@
+// By Kai Rosenbluth
+
+// By Kai Rosenbluth
+
+Spaceship s1;
+ArrayList<Astroid>astroids = new ArrayList<Astroid>();
+ArrayList<Laser> lasers = new ArrayList<Laser>();
+ArrayList<PowerUp> powerUps = new ArrayList<PowerUp>();
+Stars[] stars = new Stars[100];
+int x, y, score, level, astroidCount, astroidTime, puTime, health;
+boolean play;
+Timer astroidTimer, puTimer;
+PImage startScreen, gameOver;
+import processing.sound.*;
+SoundFile file;
+
+void setup() {
+  size(1000, 1000);
+  s1 = new Spaceship();
+  play = false;
+  score = 0;
+  level = 1;
+  health = 100;
+  astroidCount = 0;
+  astroidTime = 1400;
+  astroidTimer = new Timer(1950);
+  astroidTimer.start();
+  puTime = 1000;
+  puTimer = new Timer(4000);
+  puTimer.start();
+  //startScreen = loadImage("");
+  //gameOver = loadImage("");
+  for (int i = 0; i < stars.length; i++) {
+    stars[i] = new Stars();
+  }
+  file = new SoundFile(this, "Sound.mp3");
+  file.play();
+}
+
+void startScreen() {
+  background(0, 255, 0); // load a graphic
+  textAlign(CENTER);
+  textSize(40);
+  fill(255);
+  text("Space Game", width/2, height/2-200);
+  text("By Kai", width/2, (height/2)-100);
+  text("Click Anywhere To Start", width/2, (height/2)+200);
+  if (mousePressed) {
+    play = true;
+  }
+}
+
+void gameOver() {
+  background(0); // load a graphic
+  textAlign(CENTER);
+  textSize(40);
+  fill(255);
+  text("Game Over", width/2, height/2);
+  text("Final Score: " + score, width/2, (height/2)-40);
+  text("Try Again", width/2, (height/2)-100);
+}
+
+
+
+void draw() {
+  if (!play) {
+    startScreen();
+  } else {
+
+    background(0);
+    infoPanel();
+
+    for (int i = 0; i < stars.length; i++) {
+      stars[i].display();
+      stars[i].move();
+      if (stars[i].reachedBottom()) {
+        stars[i].y=-10;
+      }
+    }
+    if (astroidTimer.isFinished()) {
+      astroids.add (new Astroid(int(random(width)), -20));
+      astroidTimer.start();
+    }
+    if (puTimer.isFinished()) {
+      powerUps.add (new PowerUp(int(random(width)), -20));
+      puTimer.start();
+    }
+
+    //render rock and collision
+    for (int i = 0; i < astroids.size(); i++) {
+      Astroid astroid = astroids.get(i);
+      astroid.display();
+      astroid.move();
+      if (astroid.reachedBottom()) {
+        astroids.remove(astroid);
+        astroidCount++;
+      }
+      if (astroid.intersect(s1)) {
+        astroids.remove(astroid);
+        s1.health-=20;
+        score += 1;
+      }
+    }
+
+    for (int i = 0; i < powerUps.size(); i++) {
+      PowerUp pu = powerUps.get(i);
+      pu.display();
+      pu.move();
+      if (pu.reachedBottom()) {
+        powerUps.remove(pu);
+      }
+      if (pu.intersect(s1)) {
+        powerUps.remove(pu);
+        s1.laserCount += 15;
+      }
+    }
+
+    //render laser and collision
+    for (int i = 0; i < lasers.size(); i++) {
+      Laser laser = lasers.get(i);
+      for (int j = 0; j < astroids.size(); j++) {
+        Astroid astroid = astroids.get(j);
+        if (laser.intersect(astroid)) {
+          lasers.remove(laser);
+          astroid.diam-=20;
+          astroids.remove(astroid);
+          score+=1;
+        }
+      }
+      laser.display();
+      laser.move();
+      if (laser.reachedTop()) {
+        lasers.remove(laser);
+      }
+    }
+    s1.display(mouseX, mouseY);
+    if (astroidCount > 20 || s1.health == 0) {
+      gameOver();
+      noLoop();
+    }
+  }
+}
+
+void infoPanel() {
+  fill(127, 127);
+  rectMode(CORNER);
+  rect(0, 0, width, 50);
+  fill(0);
+  textAlign(CENTER);
+  text("AstroidCount:  " + astroidCount + "  Score: " + score + "  Level: " + level + "  Health: " + s1.health + "  Ammo: " + s1.laserCount, width/2, 40);
+}
+
+void mousePressed() {
+  if (s1.fire()) {
+    lasers.add(new Laser(s1.x, s1.y));
+    s1.laserCount--;
+  } //else if (turret == 2) {}
+}
+
+void keyPressed() {
+  if (keyPressed) {
+    if (key == ' ') {
+      if (s1.fire()) {
+        lasers.add(new Laser(s1.x, s1.y));
+        s1.laserCount--;
+      }
+    }
+  }
+}
+
+class Astroid {
+  int x, y, speed, diam, health, rand;
+  PImage astroid;
+
+  Astroid(int x, int y) {
+    this.x = x;
+    this.y = y;
+    speed = int(random(1, 6));
+    diam = int(1000);
+    health = diam;
+    rand = int(random(3));
+    if (rand == 0) {
+      astroid = loadImage("Astroid.png");
+      astroid.resize(200, 200);
+    } else if (rand == 1) {
+      astroid = loadImage("Astroid.png");
+      astroid.resize(150, 150);
+    } else if (rand == 2) {
+      astroid = loadImage("Astroid.png");
+      astroid.resize(100, 100);
+    } else if (rand == 3) {
+      astroid = loadImage("Astroid.png");
+      astroid.resize(70, 70);
+    }
+  }
+  void display() {
+    imageMode(CENTER);
+    image(astroid, x, y);
+  }
+  void move() {
+    y+=speed;
+  }
+  boolean reachedBottom() {
+    if (y>height+50) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  boolean intersect(Spaceship s) {
+    float distence = dist(x, y, s.x, s.y);
+    if (distence < 10) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+class Laser {
+  int x, y, diam, speed;
+
+  Laser(int x, int y) {
+    this.x = x;
+    this.y = y;
+    speed = 8;
+    diam = 3;
+  }
+  void display() {
+    rectMode(CENTER);
+    fill(0, 255, 0);
+    noStroke();
+    rect(x, y, diam, 16);
+  }
+  void move() {
+    y-=speed;
+  }
+  boolean reachedTop() {
+    if (y<-10) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  boolean intersect(Astroid r) {
+    float distance = dist(x, y, r.x, r.y);
+    if (distance < 10) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+class PowerUp {
+  int x, y, speed, diam, health, rand;
+  //PImage pu;
+  char type;
+  PImage pu;
+
+  PowerUp(int x, int y) {
+    this.x = x;
+    this.y = y;
+    speed = int(random(1, 5));
+    diam = int(100);
+    rand = int(random(2));
+    if (rand == 0) {
+      type = 'h';
+      pu = loadImage("Cash.png");
+    } else if (rand == 1) {
+      type = 'l';
+      pu = loadImage("Cash.png");
+    }
+  }
+
+
+  void display() {
+    if (rand == 0) {
+      fill(255, 0, 0);
+      pu = loadImage("Cash.png");
+      pu.resize(40, 40);
+    } else if (rand == 1) {
+      fill(0, 255, 0);
+      pu = loadImage("Cash.png");
+      pu.resize(60, 60);
+    }
+    imageMode(CENTER);
+    image(pu, x, y);
+  }
+  void move() {
+    y+=speed;
+  }
+  boolean reachedBottom() {
+    if (y>height+80) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  boolean intersect(Spaceship s) {
+    float distence = dist(x, y, s.x, s.y);
+    if (distence < 10) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+class Spaceship {
+  // Memebr Variable
+  int x, y, w, health, diam, laserCount;
+  PImage ship;
+
+  // Constructor
+  Spaceship() {
+    x = 0;
+    y = 0;
+    w = 50;
+    diam = 25;
+    health = 100;
+    laserCount = 35;
+    ship = loadImage("Ship.png");
+  }
+
+  void display(int tempX, int tempY) {
+    x = tempX ;
+    y = tempY;
+    imageMode(CENTER);
+    ship.resize(150, 150);
+    image(ship, x, y);
+  }
+
+
+  boolean fire() {
+    if (laserCount>0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  boolean intersect(Astroid r) {
+    float distence = dist(x, y, r.x, r.y);
+    if (distence < 10) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  boolean intersect(PowerUp r) {
+    float distence = dist(x, y, r.x, r.y);
+    if (distence < 50) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+class Stars {
+  // Memebr Variable
+  int x, y, diam, speed;
+
+  // Constructor
+  Stars() {
+    x = int(random(width));
+    y = int(random(height));
+    diam = int(random(1, 5));
+    speed = int(random(1, 10));
+  }
+
+  void display() {
+    fill(int(random(255, 255)), int(random(255, 255)), int(random(255, 255)));
+    ellipse(x, y, diam, diam);
+  }
+
+  void move() {
+    y+=speed;
+  }
+
+  boolean reachedBottom() {
+    if (y>height+10) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+class Timer {
+  int savedTime; // When Timer started
+  int totalTime; // How long Timer should last
+
+  Timer(int tempTotalTime) {
+    totalTime = tempTotalTime;
+  }
+
+  // Starting the timer
+  void start() {
+    // When the timer starts it stores the current time in milliseconds.
+    savedTime = millis();
+  }
+
+  // The function isFinished() returns true if 5,000 ms have passed.
+  // The work of the timer is farmed out to this method.
+  boolean isFinished() {
+    // Check how much time has passed
+    int passedTime = millis()- savedTime;
+    if (passedTime > totalTime) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+class Ufo {
+}
