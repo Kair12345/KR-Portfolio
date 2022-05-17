@@ -1,4 +1,4 @@
-# Kai Rosenbluth's Programming Portfoio 2022 
+# Kai Rosenbluth's Programming 1 Portfoio 2022 
 Computer Programming 1 which focoused on Processing and Java. 
 
 ## Processing Projects 
