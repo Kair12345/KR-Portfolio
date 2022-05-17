@@ -1,6 +1,12 @@
 # Kai Rosenbluth's Programming 1 Portfoio 2022 
 Computer Programming 1 which focoused on Processing and Java. 
 
+## Contact And Certification Information 
+### My personal email is k3kair@gmail.com 
+### Here is evidence of my programming certification: 
+* ![SpaceGame](https://github.com/Kair12345/KR-Portfolio/blob/gh-pages/Images/SpaceGameSC.png?raw=true)
+
+
 ## Processing Projects 
 
 
