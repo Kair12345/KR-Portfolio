@@ -11,11 +11,33 @@ Computer Programming 1 which focoused on Processing and Java.
 * [Source Code for Application](src/text.txt)
 
 
-### Space Game 
-OOP solution for a collision based 2d space shooter. 
+### Calculator 
+OOP solution for calculator with basic math operater functions.   \
 * Screen Capture of Running Application 
+* ![Calculator]()
 * Source Code for Application 
+* [Source Code for Application]()
 
-## Pig Latin Convertor 
+### Pig Latin Convertor 
+OOP solution for a application with basic language translation functions 
+* Screen Capture of Running Application 
+* ![Pig Latin Convertor]() 
+* Source Code for Application 
+* [Source Code for Application]() 
+
+### Shape Creater 
+OOP solution for a shape volume and area calculator 
+* Screen Capture of Running Application 
+* ![Shape Creater]() 
+* Source Code for Application 
+* [Source Code for Application]() 
+
+### Group 2048 Project 
+OOP solution for a incomplete 2048 clone  
+* Screen Capture of Running Application 
+* ![Group 2048 Project]() 
+* Source Code for Application 
+* [Source Code for Application]() 
+
 
 
