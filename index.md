@@ -4,7 +4,7 @@ Computer Programming 1 which focused on Processing and Java.
 ## Contact And Certification Information 
 ### My personal email is k3kair@gmail.com 
 ### Here is evidence of my programming certification: 
-* ![SpaceGame](https://github.com/Kair12345/KR-Portfolio/blob/gh-pages/Images/SpaceGameSC.png?raw=true)
+* ![Certification]() 
 
 
 ## Processing Projects 
