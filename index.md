@@ -1,5 +1,5 @@
 # Kai Rosenbluth's Programming 1 Portfoio 2022 
-Computer Programming 1 which focoused on Processing and Java. 
+Computer Programming 1 which focused on Processing and Java. 
 
 ## Contact And Certification Information 
 ### My personal email is k3kair@gmail.com 
