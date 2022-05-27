@@ -3,8 +3,7 @@ Computer Programming 1 which focused on Processing and Java.
 
 ## Contact And Certification Information 
 ### My personal email is k3kair@gmail.com 
-### Here is evidence of my programming certification: 
-* ![Certification]() 
+### I got over an 80- on the CTE State Exam for programming and got my certification 
 
 
 ## Processing Projects 
