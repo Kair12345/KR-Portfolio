@@ -19,9 +19,9 @@ Computer Programming 1 which focused on Processing and Java.
 
 
 ### Calculator 
-OOP solution for calculator with basic math operater functions.   \
+OOP solution for calculator with basic math operater functions.   
 * Screen Capture of Running Application 
-* ![Calculator]()
+* ![Calculator](https://github.com/Kair12345/KR-Portfolio/blob/gh-pages/Images/CalculatorSC.png?raw=true)
 * Source Code for Application 
 * [Source Code for Application]()
 
@@ -42,7 +42,7 @@ OOP solution for a shape volume and area calculator
 ### Group 2048 Project 
 OOP solution for a incomplete 2048 clone  
 * Screen Capture of Running Application 
-* ![Group 2048 Project]() 
+* ![Group 2048 Project](https://github.com/Kair12345/KR-Portfolio/blob/gh-pages/Images/GroupBlockSC.png?raw=true) 
 * Source Code for Application 
 * [Source Code for Application]() 
 
