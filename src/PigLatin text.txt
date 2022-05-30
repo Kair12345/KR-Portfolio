@@ -1,0 +1,29 @@
+import java.util.Scanner; 
+class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in); 
+    String word = sc.nextLine(); 
+    //Save first letter as char
+    char firstChar = word.charAt(0); 
+    //Save second letter as char 
+    char secoundChar = word.charAt(1); 
+    //if char 1 equals vowel move char 1 and 2 to back
+    if(firstChar == 'a' || firstChar == 'e' || firstChar == 'u' || firstChar == 'i' || firstChar == 'o'){
+      System.out.println("Your word is: " + firstChar + secoundChar); 
+      word = word.substring(2, word.length());  
+      //add "ay" 
+      word = word + firstChar + secoundChar + "ay";
+      //print old word equals new pig latin word 
+      System.out.println(word);  
+    } 
+    //if char 1 equals consonant move char 1 to back
+    if(firstChar == 'q' || firstChar == 'w' || firstChar == 'r' || firstChar == 't' || firstChar == 'y' || firstChar == 'p' || firstChar == 's'  || firstChar == 'd' || firstChar == 'f' || firstChar == 'g' || firstChar == 'h' || firstChar == 'j' || firstChar == 'k' || firstChar == 'l' || firstChar == 'z' || firstChar == 'x' || firstChar == 'c' || firstChar == 'v' || firstChar == 'b' || firstChar == 'n' || firstChar == 'm'){
+    System.out.println("Your word is:" + firstChar);
+    word = word.substring(1, word.length()); 
+    //add "ay" 
+    word = word + firstChar + "ay"; 
+    //print old word equals new pig latin word 
+    System.out.println(word); 
+    }
+  }
+}
