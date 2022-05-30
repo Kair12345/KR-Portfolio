@@ -44,6 +44,6 @@ OOP solution for a incomplete 2048 clone
 * Screen Capture of Running Application 
 * ![Group 2048 Project](https://github.com/Kair12345/KR-Portfolio/blob/gh-pages/Images/GroupBlockSC.png?raw=true) 
 * Source Code for Application 
-* [Source Code for Application]() 
+* [Source Code for Application](https://github.com/Kair12345/KR-Portfolio/blob/gh-pages/src/GroupGame%20text.txt) 
 
 
