@@ -6,7 +6,9 @@ Computer Programming 1 which focused on Processing and Java.
 ### I got over an 80- on the CTE State Exam for programming and got my certification 
 
 
-## Processing Projects 
+
+# Processing Projects 
+
 
 
 ### Space Game 
