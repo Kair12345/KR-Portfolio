@@ -28,14 +28,14 @@ OOP solution for calculator with basic math operater functions.
 ### Pig Latin Convertor 
 OOP solution for a application with basic language translation functions 
 * Screen Capture of Running Application 
-* ![Pig Latin Convertor]() 
+* ![Pig Latin Convertor](https://github.com/Kair12345/KR-Portfolio/blob/gh-pages/Images/PigLanguageSC.png?raw=true) 
 * Source Code for Application 
 * [Source Code for Application]() 
 
 ### Shape Creater 
 OOP solution for a shape volume and area calculator 
 * Screen Capture of Running Application 
-* ![Shape Creater]() 
+* ![Shape Creater](https://github.com/Kair12345/KR-Portfolio/blob/gh-pages/Images/ShapeTestSC.png?raw=true) 
 * Source Code for Application 
 * [Source Code for Application]() 
 
