@@ -33,7 +33,7 @@ OOP solution for a application with basic language translation functions
 * ![Pig Latin Convertor](https://github.com/Kair12345/KR-Portfolio/blob/gh-pages/Images/PigLanguageSC.png?raw=true) 
 * [Source Code for Application](https://github.com/Kair12345/KR-Portfolio/blob/gh-pages/src/PigLatin%20text.txt) 
 * Game Description: 
-This application will take any combinations of letters and change it into basic Pig Latin by switching the placement of some consonants and vowels and adding "ay." Solme limits of this application is it does not contain the code necassary to convert more then one word at a time without re-running the program. 
+This application will take any combinations of letters and change it into basic Pig Latin by switching the placement of some consonants and vowels and adding "ay." Solme limits of this application is it does not contain the code necassary to convert more then one word at a time without re-running the program. For example, entering the word "hello" into the program and clicking enter will cause the program to change the word to "
 
 ### Shape Creater 
 OOP solution for a shape volume and area calculator 
